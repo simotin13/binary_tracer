@@ -20,45 +20,45 @@ const SIZE_ELF64_SWORD: usize   = mem::size_of::<Elf64Sword>();
 const SIZE_ELF64_ADDR: usize    = mem::size_of::<Elf64Addr>();
 const SIZE_ELF64_OFF: usize     = mem::size_of::<Elf64Off>();
 
-const EI_NIDENT: usize  = 16;
-const EI_CLASS: usize   = 4;
-const EI_DATA: usize    = 5;    /* Data encoding byte index */
-const EI_VERSION: usize = 6;    /* File version byte index */
-const EI_OSABI: usize   = 7;    /* OS ABI identification */
-const EI_ABIVERSION:usize   = 8;    /* ABI version */
+const EI_NIDENT: usize      = 16;
+const EI_CLASS: usize       = 4;
+const EI_DATA: usize        = 5;
+const EI_VERSION: usize     = 6;
+const EI_OSABI: usize       = 7;
+const EI_ABIVERSION:usize   = 8;
 
-const ELFOSABI_NONE: u8 = 0;    /* UNIX System V ABI */
-const ELFOSABI_SYSV: u8	= 0;    /* Alias.  */
-const ELFOSABI_HPUX: u8	= 1;    /* HP-UX */
-const ELFOSABI_NETBSD: u8   = 2;  /* NetBSD.  */
-const ELFOSABI_GNU: u8      = 3;  /* Object uses GNU ELF extensions.  */
-const ELFOSABI_LINUX: u8    = ELFOSABI_GNU; /* Compatibility alias.  */
-const ELFOSABI_SOLARIS: u8  = 6; /* Sun Solaris.  */
-const ELFOSABI_AIX: u8      = 7;    /* IBM AIX.  */
-const ELFOSABI_IRIX: u8		= 8;    /* SGI Irix.  */
-const ELFOSABI_FREEBSD: u8  = 9;    /* FreeBSD.  */
-const ELFOSABI_TRU64: u8    = 10;   /* Compaq TRU64 UNIX.  */
-const ELFOSABI_MODESTO: u8  = 11;   /* Novell Modesto.  */
-const ELFOSABI_OPENBSD: u8  = 12;   /* OpenBSD.  */
-const ELFOSABI_ARM_AEABI: u8 = 64;      /* ARM EABI */
-const ELFOSABI_ARM: u8      = 97;       /* ARM */
-const ELFOSABI_STANDALONE: u8 = 255;    /* Standalone (embedded) application */
+// OSABI
+const ELFOSABI_NONE: u8         = 0;
+const ELFOSABI_SYSV: u8	        = 0;
+const ELFOSABI_HPUX: u8	        = 1;
+const ELFOSABI_NETBSD: u8       = 2;
+const ELFOSABI_GNU: u8          = 3;
+const ELFOSABI_LINUX: u8        = ELFOSABI_GNU;
+const ELFOSABI_SOLARIS: u8      = 6;
+const ELFOSABI_AIX: u8          = 7;
+const ELFOSABI_IRIX: u8		    = 8;
+const ELFOSABI_FREEBSD: u8      = 9;
+const ELFOSABI_TRU64: u8        = 10;
+const ELFOSABI_MODESTO: u8      = 11;
+const ELFOSABI_OPENBSD: u8      = 12;
+const ELFOSABI_ARM_AEABI: u8    = 64;
+const ELFOSABI_ARM: u8          = 97;
+const ELFOSABI_STANDALONE: u8   = 255;
 
 const ELFCLASSNONE: u8  = 0;
 const ELFCLASS32: u8    = 1;
 const ELFCLASS64: u8    = 2;
 
-const ELFDATANONE: u8   = 0;		/* Invalid data encoding */
-const ELFDATA2LSB: u8   = 1;		/* 2's complement, little endian */
-const ELFDATA2MSB: u8   = 2;		/* 2's complement, big endian */
-const ELFDATANUM: u8    = 3;
+const ELFDATANONE: u8   = 0;
+const ELFDATA2LSB: u8   = 1;
+const ELFDATA2MSB: u8   = 2;
 
-const ET_NONE:u16   = 0;     /* No file type */
-const ET_REL:u16	= 1;    /* Relocatable file */
-const ET_EXEC:u16	= 2;    /* Executable file */
-const ET_DYN:u16    = 3;    /* Shared object file */
-const ET_CORE:u16   = 4;    /* Core file */
-const ET_NUM:u16    = 5;    /* Number of defined types */
+const ET_NONE:u16   = 0;
+const ET_REL:u16	= 1;
+const ET_EXEC:u16	= 2;
+const ET_DYN:u16    = 3;
+const ET_CORE:u16   = 4;
+const ET_NUM:u16    = 5;
 
 const ELF64_OFFSET_E_TYPE: usize        = EI_NIDENT;
 const ELF64_OFFSET_E_MACHINE: usize     = ELF64_OFFSET_E_TYPE + SIZE_ELF64_HALF;
@@ -66,8 +66,8 @@ const ELF64_OFFSET_E_VERSION: usize     = ELF64_OFFSET_E_MACHINE + SIZE_ELF64_HA
 const ELF64_OFFSET_E_ENTRY: usize       = ELF64_OFFSET_E_VERSION + SIZE_ELF64_WORD;
 const ELF64_OFFSET_E_PHOFF: usize       = ELF64_OFFSET_E_ENTRY + SIZE_ELF64_ADDR;
 const ELF64_OFFSET_E_SHOFF: usize       = ELF64_OFFSET_E_PHOFF + SIZE_ELF64_OFF;
-const ELF64_OFFSET_E_FLAGS: usize       = ELF64_OFFSET_E_SHOFF + SIZE_ELF64_WORD;
-const ELF64_OFFSET_E_EHSIZE: usize      = ELF64_OFFSET_E_FLAGS + SIZE_ELF64_HALF;
+const ELF64_OFFSET_E_FLAGS: usize       = ELF64_OFFSET_E_SHOFF + SIZE_ELF64_OFF;
+const ELF64_OFFSET_E_EHSIZE: usize      = ELF64_OFFSET_E_FLAGS + SIZE_ELF64_WORD;
 const ELF64_OFFSET_E_PHENTSIZE: usize   = ELF64_OFFSET_E_EHSIZE + SIZE_ELF64_HALF;
 const ELF64_OFFSET_E_PHNUM: usize       = ELF64_OFFSET_E_PHENTSIZE + SIZE_ELF64_HALF;
 const ELF64_OFFSET_E_SHENTSIZE: usize   = ELF64_OFFSET_E_PHNUM + SIZE_ELF64_HALF;
@@ -121,7 +121,6 @@ impl Elf64Ehdr {
 
         buf_word.copy_from_slice(&bytes[ELF64_OFFSET_E_FLAGS..ELF64_OFFSET_E_FLAGS + SIZE_ELF64_WORD]);
         let e_flags = Elf64Word::from_le_bytes(buf_word);
-        
         buf_half.copy_from_slice(&bytes[ELF64_OFFSET_E_EHSIZE..ELF64_OFFSET_E_EHSIZE + SIZE_ELF64_HALF]);
         let e_ehsize = Elf64Half::from_le_bytes(buf_half);
         buf_half.copy_from_slice(&bytes[ELF64_OFFSET_E_PHENTSIZE..ELF64_OFFSET_E_PHENTSIZE + SIZE_ELF64_HALF]);
@@ -168,31 +167,16 @@ fn main() {
 
     let elf64ehdr :Elf64Ehdr = Elf64Ehdr::new(&buf);
     show_elf_header_info(elf64ehdr);
-
-    /*
-    unsafe {
-        elf32Ehdr = mem::transmute::<[u8; 2], Elf32Ehdr>(ary);
-    }
-    */
-
-    //println!("0x{:02X}", elf32Ehdr.e_type);
-    /*
-    let contents = fs::read_to_string(&argv[1]).expect(&msg);
-    println!("{}", contents);
-    */
 }
 
 fn show_elf_header_info(elf64ehdr: Elf64Ehdr) {
     println!("ELF Header:");
-
-    // magic number
     print!("  Magic:{:3}", "");
     for by in elf64ehdr.e_ident.iter() {
         print!("{:02x} ", by);
     }
     println!("");
 
-    // class
     match elf64ehdr.e_ident[EI_CLASS] {
         ELFCLASSNONE => println!("  Class:{:29}ELF None", ""),
         ELFCLASS32 => println!("  Class:{:29}ELF32", ""),
@@ -200,7 +184,6 @@ fn show_elf_header_info(elf64ehdr: Elf64Ehdr) {
         _ => println!("  Class: {:29}{}", "", elf64ehdr.e_ident[EI_CLASS])
     }
 
-    // endian
     match elf64ehdr.e_ident[EI_DATA] {
         ELFDATANONE => println!("  Data:{:30}Invalid data encoding", ""),
         ELFDATA2LSB => println!("  Data:{:30}2's complement, little endian", ""),
@@ -208,10 +191,8 @@ fn show_elf_header_info(elf64ehdr: Elf64Ehdr) {
         _ => println!("  Data: {:30}{}", "", elf64ehdr.e_ident[EI_CLASS])
     }
 
-    // version
-    println!("  Version:{:27}{}", "", elf64ehdr.e_ident[EI_VERSION]);
+    println!("  Version:{:27}{} (current)", "", elf64ehdr.e_ident[EI_VERSION]);
 
-    // OS/ABI
     match elf64ehdr.e_ident[EI_OSABI] {
         ELFOSABI_NONE => println!("  OS/ABI:{:28}UNIX - System V", ""),
         ELFOSABI_SYSV => println!("  OS/ABI:{:28}Alias.", ""),
@@ -232,17 +213,29 @@ fn show_elf_header_info(elf64ehdr: Elf64Ehdr) {
         _ => println!("  OS/ABI:{:28}{}", "", elf64ehdr.e_ident[EI_OSABI])
     }
 
-    // ABI Version
     println!("  ABI Version:{:23}{}", "", elf64ehdr.e_ident[EI_ABIVERSION]);
 
-    // type
     print!("  Type:{:30}", "");
     match elf64ehdr.e_type {
-        ET_NONE => println!("None"),     /* No file type */
-        ET_REL	=> println!("REL"),    /* Relocatable file */
-        ET_EXEC	=> println!("EXE"),    /* Executable file */
-        ET_DYN  => println!("DYN"),    /* Shared object file */
-        ET_CORE => println!("Core"),    /* Core file */
+        ET_NONE => println!("None"),
+        ET_REL	=> println!("REL"),
+        ET_EXEC	=> println!("EXE"),
+        ET_DYN  => println!("DYN (Shared object file)"),
+        ET_CORE => println!("Core"),
         _ => println!("{}", elf64ehdr.e_type)
     }
+
+    println!("  Machine:{:29}", elf64ehdr.e_machine);
+    println!("  Version:{:27}0x{:x}", "", elf64ehdr.e_version);
+    println!("  Entry point address:{:15}0x{:x}", "", elf64ehdr.e_entry);
+    println!("  Start of program headers:{:10}{} (bytes into file)", "", elf64ehdr.e_phoff);
+    println!("  Start of section headers:{:10}{} (bytes into file)", "", elf64ehdr.e_shoff);
+    println!("  Flags:{:29}0x{:x}", "", elf64ehdr.e_flags);
+    println!("  Size of this header:{:15}{} (bytes)", "", elf64ehdr.e_ehsize);
+    println!("  Size of program headers:{:11}{} (bytes)", "", elf64ehdr.e_phentsize);
+    println!("  Number of program headers:{:9}{}", "", elf64ehdr.e_phnum);
+    println!("  Size of section headers:{:11}{} (bytes)", "", elf64ehdr.e_shentsize);
+    println!("  Number of section headers:{:9}{}", "", elf64ehdr.e_shnum);
+    println!("  Section header string table index:{:1}{}", "", elf64ehdr.e_shstrndx);
 }
+
