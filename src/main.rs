@@ -1,14 +1,18 @@
 use std::env;
 use std::fs::File;
 use std::io::Read;
-use std::mem;
+use std::process::Command;
+use std::process::Stdio;
+use std::io::Write;
+
 mod elf;
+mod gdbmi;
 
 fn main() {
 
     let argv:Vec<String> = env::args().collect();
     if argv.len() < 2 {
-        eprintln!("no input file");
+        eprintln!("input debug target");
         std::process::exit(-1);
     }
 
@@ -19,5 +23,9 @@ fn main() {
 
     let elf64ehdr: elf::Elf64Ehdr = elf::Elf64Ehdr::new(&buf);
     elf64ehdr.show_elf_header_info();
+
+    // start gdb
+    let mut gdbmi = gdbmi::GdbMi::new(&argv[1], 1000);
+    gdbmi.start()
 }
 
