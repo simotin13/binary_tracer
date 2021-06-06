@@ -209,7 +209,7 @@ impl Elf64Ehdr {
         match self.e_type {
             ET_NONE => println!("None"),
             ET_REL	=> println!("REL"),
-            ET_EXEC	=> println!("EXE"),
+            ET_EXEC	=> println!("EXE (Executable file)"),
             ET_DYN  => println!("DYN (Shared object file)"),
             ET_CORE => println!("Core"),
             _ => println!("{}", self.e_type)
