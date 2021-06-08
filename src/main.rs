@@ -21,7 +21,7 @@ fn main() {
     let mut buf = Vec::new();
     let _ret = f.read_to_end(&mut buf);
     if elf::is_elf(&buf) != true {
-        eprintln!("{} is not ELF Formart File", argv[1]);
+        eprintln!("{} is not ELF format file", argv[1]);
         std::process::exit(-1);
     }
 
