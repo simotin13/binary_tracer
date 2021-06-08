@@ -29,13 +29,25 @@ impl GdbMi {
         self.exec_cmd("-exec-run");
     }
 
+    pub set_break_point(&self, func_name: &str) {
+        self.exec_cmd(format("-break-insert {}", func_name));
+    }
+
+    pub stepi(&self) {
+        self.exec_cmd("-exec-step-instruction");
+    }
+
     fn write_cmd(&self, cmd: &str) {
-        //self.stdin.write_all(cmd.as_bytes()).expect("Failed to write to stdin");
-        println!("TODO");
+        self.stdin.write_all(cmd.as_bytes()).expect("Failed to write to stdin");
     }
 
     fn wait_until_writable(&self) {
-        println!("TODO");
+        loop {
+            // TODO
+            //ret = IO::select(nil, [@stdin], nil, @timeout)
+            //break if 0 < ret[1].length
+            println!("stdin waiting...");
+        }
     }
 
     fn check_status(&self) {

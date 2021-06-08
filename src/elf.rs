@@ -414,6 +414,7 @@ pub fn is_elf(bytes: &[u8]) -> bool {
     }
     true
 }
+
 pub fn is_elf32(bytes: &[u8]) -> bool {
     bytes[EI_CLASS] == ELFCLASS32
 }

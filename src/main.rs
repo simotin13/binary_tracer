@@ -28,16 +28,21 @@ fn main() {
     if elf::is_elf32(&buf) {
         let elf32ehdr: elf::Elf32Ehdr = elf::Elf32Ehdr::new(&buf);
         elf32ehdr.show_elf_header_info();
-    }
-
-    if elf::is_elf64(&buf) {
+    } else if elf::is_elf64(&buf) {
         let elf64ehdr: elf::Elf64Ehdr = elf::Elf64Ehdr::new(&buf);
         elf64ehdr.show_elf_header_info();
+    } else {
+        eprintln!("{} is Unsupported ELF format file", argv[1]);
+        std::process::exit(-1);
     }
-
 
     // start gdb
     let mut gdbmi = gdbmi::GdbMi::new(&argv[1], 1000);
-    gdbmi.start()
+    gdbmi.start();
+    gdbmi.set_break_point("main");
+    gdbmi.run();
+    loop {
+        gdbmi.stepi();
+  
 }
 
