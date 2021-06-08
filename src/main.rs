@@ -1,3 +1,5 @@
+extern crate mio;
+
 use std::env;
 use std::fs::File;
 use std::io::Read;
@@ -43,6 +45,6 @@ fn main() {
     gdbmi.run();
     loop {
         gdbmi.stepi();
-  
+    }
 }
 
